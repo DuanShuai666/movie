@@ -87,6 +87,19 @@ export const constantRoutes = [
         meta: { title: '个人中心', icon: 'user' }
       }
     ]
+  },
+  {
+    path: '/movie',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'chat',
+        component: () => import('@/views/movie/chat'),
+        name: 'MovieChat',
+        meta: { title: '电影问答', icon: 'chat' }
+      }
+    ]
   }
 ]
 

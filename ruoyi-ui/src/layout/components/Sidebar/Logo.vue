@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import logoImg from '@/assets/logo/logo.png'
+import movieLogo from '@/assets/logo/movie-qa-logo.svg'
 import variables from '@/assets/styles/variables.scss'
 
 export default {
@@ -38,8 +38,8 @@ export default {
   },
   data() {
     return {
-      title: process.env.VUE_APP_TITLE,
-      logo: logoImg
+      title: '电影知识问答系统',
+      logo: movieLogo
     }
   }
 }

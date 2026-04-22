@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.MovieMapper">
+    
+    <resultMap type="Movie" id="MovieResult">
+        <result property="id"    column="id"    />
+        <result property="title"    column="title"    />
+        <result property="originalTitle"    column="original_title"    />
+        <result property="overview"    column="overview"    />
+        <result property="releaseDate"    column="release_date"    />
+        <result property="year"    column="year"    />
+        <result property="runtime"    column="runtime"    />
+        <result property="voteAverage"    column="vote_average"    />
+        <result property="voteCount"    column="vote_count"    />
+        <result property="popularity"    column="popularity"    />
+        <result property="posterPath"    column="poster_path"    />
+        <result property="backdropPath"    column="backdrop_path"    />
+        <result property="imdbId"    column="imdb_id"    />
+        <result property="status"    column="status"    />
+        <result property="createdAt"    column="created_at"    />
+        <result property="updatedAt"    column="updated_at"    />
+    </resultMap>
+
+    <sql id="selectMovieVo">
+        select id, title, original_title, overview, release_date, year, runtime, vote_average, vote_count, popularity, poster_path, backdrop_path, imdb_id, status, created_at, updated_at from movie
+    </sql>
+
+    <select id="selectMovieList" parameterType="Movie" resultMap="MovieResult">
+        <include refid="selectMovieVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="originalTitle != null  and originalTitle != ''"> and original_title = #{originalTitle}</if>
+            <if test="overview != null  and overview != ''"> and overview = #{overview}</if>
+            <if test="releaseDate != null "> and release_date = #{releaseDate}</if>
+            <if test="year != null "> and year = #{year}</if>
+            <if test="runtime != null "> and runtime = #{runtime}</if>
+            <if test="voteAverage != null "> and vote_average = #{voteAverage}</if>
+            <if test="voteCount != null "> and vote_count = #{voteCount}</if>
+            <if test="popularity != null "> and popularity = #{popularity}</if>
+            <if test="posterPath != null  and posterPath != ''"> and poster_path = #{posterPath}</if>
+            <if test="backdropPath != null  and backdropPath != ''"> and backdrop_path = #{backdropPath}</if>
+            <if test="imdbId != null  and imdbId != ''"> and imdb_id = #{imdbId}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="createdAt != null "> and created_at = #{createdAt}</if>
+            <if test="updatedAt != null "> and updated_at = #{updatedAt}</if>
+        </where>
+    </select>
+    
+    <select id="selectMovieById" parameterType="Long" resultMap="MovieResult">
+        <include refid="selectMovieVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertMovie" parameterType="Movie">
+        insert into movie
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="title != null and title != ''">title,</if>
+            <if test="originalTitle != null">original_title,</if>
+            <if test="overview != null">overview,</if>
+            <if test="releaseDate != null">release_date,</if>
+            <if test="year != null">year,</if>
+            <if test="runtime != null">runtime,</if>
+            <if test="voteAverage != null">vote_average,</if>
+            <if test="voteCount != null">vote_count,</if>
+            <if test="popularity != null">popularity,</if>
+            <if test="posterPath != null">poster_path,</if>
+            <if test="backdropPath != null">backdrop_path,</if>
+            <if test="imdbId != null">imdb_id,</if>
+            <if test="status != null">status,</if>
+            <if test="createdAt != null">created_at,</if>
+            <if test="updatedAt != null">updated_at,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="title != null and title != ''">#{title},</if>
+            <if test="originalTitle != null">#{originalTitle},</if>
+            <if test="overview != null">#{overview},</if>
+            <if test="releaseDate != null">#{releaseDate},</if>
+            <if test="year != null">#{year},</if>
+            <if test="runtime != null">#{runtime},</if>
+            <if test="voteAverage != null">#{voteAverage},</if>
+            <if test="voteCount != null">#{voteCount},</if>
+            <if test="popularity != null">#{popularity},</if>
+            <if test="posterPath != null">#{posterPath},</if>
+            <if test="backdropPath != null">#{backdropPath},</if>
+            <if test="imdbId != null">#{imdbId},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createdAt != null">#{createdAt},</if>
+            <if test="updatedAt != null">#{updatedAt},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMovie" parameterType="Movie">
+        update movie
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="originalTitle != null">original_title = #{originalTitle},</if>
+            <if test="overview != null">overview = #{overview},</if>
+            <if test="releaseDate != null">release_date = #{releaseDate},</if>
+            <if test="year != null">year = #{year},</if>
+            <if test="runtime != null">runtime = #{runtime},</if>
+            <if test="voteAverage != null">vote_average = #{voteAverage},</if>
+            <if test="voteCount != null">vote_count = #{voteCount},</if>
+            <if test="popularity != null">popularity = #{popularity},</if>
+            <if test="posterPath != null">poster_path = #{posterPath},</if>
+            <if test="backdropPath != null">backdrop_path = #{backdropPath},</if>
+            <if test="imdbId != null">imdb_id = #{imdbId},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createdAt != null">created_at = #{createdAt},</if>
+            <if test="updatedAt != null">updated_at = #{updatedAt},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMovieById" parameterType="Long">
+        delete from movie where id = #{id}
+    </delete>
+
+    <delete id="deleteMovieByIds" parameterType="String">
+        delete from movie where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -134,3 +134,8 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
+
+# 电影问答服务配置
+movie:
+  chat:
+    api-url: http://localhost:5000

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.PersonMapper">
+    
+    <resultMap type="Person" id="PersonResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="originalName"    column="original_name"    />
+        <result property="gender"    column="gender"    />
+        <result property="profilePath"    column="profile_path"    />
+        <result property="biography"    column="biography"    />
+        <result property="birthday"    column="birthday"    />
+        <result property="createdAt"    column="created_at"    />
+    </resultMap>
+
+    <sql id="selectPersonVo">
+        select id, name, original_name, gender, profile_path, biography, birthday, created_at from person
+    </sql>
+
+    <select id="selectPersonList" parameterType="Person" resultMap="PersonResult">
+        <include refid="selectPersonVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="originalName != null  and originalName != ''"> and original_name like concat('%', #{originalName}, '%')</if>
+            <if test="gender != null "> and gender = #{gender}</if>
+            <if test="profilePath != null  and profilePath != ''"> and profile_path = #{profilePath}</if>
+            <if test="biography != null  and biography != ''"> and biography = #{biography}</if>
+            <if test="birthday != null "> and birthday = #{birthday}</if>
+            <if test="createdAt != null "> and created_at = #{createdAt}</if>
+        </where>
+    </select>
+    
+    <select id="selectPersonById" parameterType="Long" resultMap="PersonResult">
+        <include refid="selectPersonVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertPerson" parameterType="Person">
+        insert into person
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null and name != ''">name,</if>
+            <if test="originalName != null">original_name,</if>
+            <if test="gender != null">gender,</if>
+            <if test="profilePath != null">profile_path,</if>
+            <if test="biography != null">biography,</if>
+            <if test="birthday != null">birthday,</if>
+            <if test="createdAt != null">created_at,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="originalName != null">#{originalName},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="profilePath != null">#{profilePath},</if>
+            <if test="biography != null">#{biography},</if>
+            <if test="birthday != null">#{birthday},</if>
+            <if test="createdAt != null">#{createdAt},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePerson" parameterType="Person">
+        update person
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="originalName != null">original_name = #{originalName},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="profilePath != null">profile_path = #{profilePath},</if>
+            <if test="biography != null">biography = #{biography},</if>
+            <if test="birthday != null">birthday = #{birthday},</if>
+            <if test="createdAt != null">created_at = #{createdAt},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePersonById" parameterType="Long">
+        delete from person where id = #{id}
+    </delete>
+
+    <delete id="deletePersonByIds" parameterType="String">
+        delete from person where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

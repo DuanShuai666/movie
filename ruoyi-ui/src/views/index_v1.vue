@@ -80,19 +80,28 @@ export default {
 <style lang="scss" scoped>
 .dashboard-editor-container {
   padding: 32px;
-  background-color: rgb(240, 242, 245);
+  background: rgba(5, 15, 32, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
   position: relative;
+}
 
-  .chart-wrapper {
-    background: #fff;
-    padding: 16px 16px 0;
-    margin-bottom: 32px;
-  }
+.dashboard-editor-container .chart-wrapper {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 22px 22px 16px;
+  margin-bottom: 32px;
+  border-radius: 20px;
 }
 
 @media (max-width:1024px) {
+  .dashboard-editor-container {
+    padding: 20px;
+  }
+
   .chart-wrapper {
-    padding: 8px;
+    padding: 16px;
   }
 }
 </style>

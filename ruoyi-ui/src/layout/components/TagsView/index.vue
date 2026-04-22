@@ -241,9 +241,9 @@ export default {
 .tags-view-container {
   height: 34px;
   width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #d8dce5;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
+  background: #ffffff;
+  border-bottom: 1px solid rgba(15,23,42,0.08);
+  box-shadow: 0 1px 3px 0 rgba(15,23,42,0.06), 0 0 3px 0 rgba(15,23,42,0.04);
   .tags-view-wrapper {
     .tags-view-item {
       display: inline-block;
@@ -251,9 +251,9 @@ export default {
       cursor: pointer;
       height: 26px;
       line-height: 26px;
-      border: 1px solid #d8dce5;
-      color: #495060;
-      background: #fff;
+      border: 1px solid rgba(15,23,42,0.12);
+      color: #111827;
+      background: #ffffff;
       padding: 0 8px;
       font-size: 12px;
       margin-left: 5px;
@@ -265,9 +265,9 @@ export default {
         margin-right: 15px;
       }
       &.active {
-        background-color: #42b983;
+        background-color: #3c8ee1;
         color: #fff;
-        border-color: #42b983;
+        border-color: #3c8ee1;
         &::before {
           content: '';
           background: #fff;
@@ -288,7 +288,7 @@ export default {
 
   .contextmenu {
     margin: 0;
-    background: #fff;
+    background: #ffffff;
     z-index: 3000;
     position: absolute;
     list-style-type: none;
@@ -296,14 +296,15 @@ export default {
     border-radius: 4px;
     font-size: 12px;
     font-weight: 400;
-    color: #333;
-    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .3);
+    color: #111827;
+    border: 1px solid rgba(15,23,42,0.08);
+    box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, .12);
     li {
       margin: 0;
       padding: 7px 16px;
       cursor: pointer;
       &:hover {
-        background: #eee;
+        background: rgba(15,23,42,0.04);
       }
     }
   }

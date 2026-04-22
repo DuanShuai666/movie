@@ -84,47 +84,51 @@ export default {
     font-size: 12px;
     position: relative;
     overflow: hidden;
-    color: #666;
-    background: #fff;
-    box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
-    border-color: rgba(0, 0, 0, .05);
+    color: #eef4ff;
+    background: linear-gradient(135deg, rgba(12, 29, 58, 0.96), rgba(4, 13, 31, 0.96));
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
 
     &:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.16);
+
       .card-panel-icon-wrapper {
         color: #fff;
       }
 
       .icon-people {
-        background: #40c9c6;
+        background: #3b82f6;
       }
 
       .icon-message {
-        background: #36a3f7;
+        background: #60a5fa;
       }
 
       .icon-money {
-        background: #f4516c;
+        background: #f97316;
       }
 
       .icon-shopping {
-        background: #34bfa3
+        background: #22c55e;
       }
     }
 
     .icon-people {
-      color: #40c9c6;
+      color: #60a5fa;
     }
 
     .icon-message {
-      color: #36a3f7;
+      color: #38bdf8;
     }
 
     .icon-money {
-      color: #f4516c;
+      color: #fb923c;
     }
 
     .icon-shopping {
-      color: #34bfa3
+      color: #4ade80;
     }
 
     .card-panel-icon-wrapper {
@@ -132,29 +136,32 @@ export default {
       margin: 14px 0 0 14px;
       padding: 16px;
       transition: all 0.38s ease-out;
-      border-radius: 6px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     }
 
     .card-panel-icon {
       float: left;
-      font-size: 48px;
+      font-size: 42px;
     }
 
     .card-panel-description {
       float: right;
       font-weight: bold;
-      margin: 26px;
+      margin: 24px;
       margin-left: 0px;
 
       .card-panel-text {
         line-height: 18px;
-        color: rgba(0, 0, 0, 0.45);
+        color: rgba(255, 255, 255, 0.72);
         font-size: 16px;
         margin-bottom: 12px;
       }
 
       .card-panel-num {
         font-size: 20px;
+        color: #fff;
       }
     }
   }
